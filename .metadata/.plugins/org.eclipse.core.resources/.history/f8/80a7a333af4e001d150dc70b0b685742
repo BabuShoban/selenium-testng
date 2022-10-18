@@ -1,0 +1,17 @@
+package testsuite;
+
+public class TestSuite extends MyFirstTestSuite {
+	
+
+	
+	public void ToVerifyProductsAddedToCartSucccessfully() {
+		
+		goToYourLogoPage();
+		clickFirstProductInHomePage();
+		selectSizeFromDropDown();
+		clickAddToCartButton();
+		clickProccedToCheckOutButton();	
+		
+	}
+
+}

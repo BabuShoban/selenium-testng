@@ -1,0 +1,31 @@
+package testautomation;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class sampletest {
+
+	public static void main(String[] args) {
+		
+		/*Using webdriver manager for reduce dependency of drivers*/
+		WebDriverManager.chromedriver().setup();
+		
+		/*Manually setup chrome driver*/
+		//System.setProperty("webdriver.chrome.driver", "/Users/shobanbabumanohar/eclipse-workspace/testautomation/chromedriver");
+		
+		WebDriver driver = new ChromeDriver();
+		
+	    WebDriverManager.chromedriver().setup();
+		driver.get("http://automationpractice.com/index.php");
+		
+		driver.manage().window().maximize();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+	}
+
+}

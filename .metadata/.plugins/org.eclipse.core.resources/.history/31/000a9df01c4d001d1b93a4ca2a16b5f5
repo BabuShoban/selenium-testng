@@ -1,0 +1,50 @@
+package testautomation;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class sampletest {
+
+	public static void main(String[] args) {
+		
+		//Using webdriver manager for reduce dependency of drivers
+		WebDriverManager.chromedriver().setup();
+		
+		//Manually setup chrome driver
+		//System.setProperty("webdriver.chrome.driver", "/Users/shobanbabumanohar/eclipse-workspace/testautomation/chromedriver");
+		
+		WebDriver driver = new ChromeDriver();
+		
+	    WebDriverManager.chromedriver().setup();
+		driver.get("http://automationpractice.com/index.php");
+		
+		
+		//Maximize the window
+		driver.manage().window().maximize();
+		
+		//Implicit Wait
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+		driver.findElement(By.xpath("//*[@id=\"homefeatured\"]//li[1]//a[1]")).click();
+		
+		Select sizeDropDown = new Select(driver.findElement(By.id("group_1")));
+		//sizeDropDown.selectByIndex(2);
+		//sizeDropDown.selectByValue("3");
+		sizeDropDown.selectByVisibleText("L");
+		
+		driver.findElement(By.id("add_to_cart")).click();
+		
+		
+		//Close driver
+		//driver.close();
+
+	}
+
+}

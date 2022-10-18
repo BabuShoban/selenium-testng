@@ -1,0 +1,19 @@
+package testsuite;
+
+import org.testng.annotations.Test;
+
+public class TestSuite extends MyFirstTestSuite {
+	
+
+	@Test
+	public void ToVerifyProductsAddedToCartSucccessfully() {
+		
+		goToYourLogoPage();
+		clickFirstProductInHomePage();
+		selectSizeFromDropDown();
+		clickAddToCartButton();
+		clickProccedToCheckOutButton();	
+		
+	}
+
+}

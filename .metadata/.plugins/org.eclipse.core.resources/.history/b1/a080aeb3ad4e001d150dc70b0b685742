@@ -1,0 +1,68 @@
+package testsuite;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class MyFirstTestSuite {
+	
+	WebDriver driver;
+	
+	@Test
+	public void startWebdriver() {
+		
+		//Using webdriver manager for reduce dependency of drivers
+		WebDriverManager.chromedriver().setup();
+		
+		//Manually setup chrome driver
+		//System.setProperty("webdriver.chrome.driver", "/Users/shobanbabumanohar/eclipse-workspace/testautomation/chromedriver");
+		
+		 driver = new ChromeDriver();
+		
+	    WebDriverManager.chromedriver().setup();
+		driver.get("http://automationpractice.com/index.php");
+		
+		//Maximize the window
+		driver.manage().window().maximize();
+		
+		//Implicit Wait
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
+	}
+	
+	@Test
+	public void clickFirstProductInHomePage() {
+		driver.findElement(By.xpath("//*[@id=\"homefeatured\"]//li[1]//a[1]")).click();
+	}
+	
+	
+	@Test
+	public void selectSizeFromDropDown()
+	{
+		Select sizeDropDown = new Select(driver.findElement(By.id("group_1")));
+		//sizeDropDown.selectByIndex(2);
+		//sizeDropDown.selectByValue("3");
+		sizeDropDown.selectByVisibleText("L");
+	}
+	
+	@Test
+	public void clickAddToCartButton() {
+		driver.findElement(By.id("add_to_cart")).click();
+	}
+	
+	@Test
+	public void clickProccedToCheckOutButton() {
+		driver.findElement(By.xpath("//*[@title='Proceed to checkout']")).click();
+	}
+	
+	public void closeWebDriver() {
+		driver.close();
+	}
+
+}
